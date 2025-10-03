@@ -36,3 +36,9 @@
 /public/uploads
 
 .env
+/vendor/bundle/
+/.bundle/
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
