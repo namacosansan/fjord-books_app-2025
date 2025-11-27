@@ -1,0 +1,9 @@
+ja:
+  books:
+    index:
+      title: "本の一覧"
+      new: "新しい本"
+      show: "この本の詳細"
+  locale_switch:
+    to_japanese: "日本語へ"
+    to_english: "英語へ"

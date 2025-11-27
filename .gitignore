@@ -42,3 +42,12 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+
+# macOS system file
+.DS_Store
+**/.DS_Store
+
+# Backup files (Vim, editors)
+*~
+*.un~
+
