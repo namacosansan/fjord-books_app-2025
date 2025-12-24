@@ -4,6 +4,44 @@ en:
       title: "Books"
       new: "New book"
       show: "Show this book"
+      
+    book:
+      title: Title
+      memo: Memo
+      author: Author
+      picture: Picture
+    
+    show:
+      edit: "Edit this book"
+      back: "Back to books"
+      destroy: "Destroy this book"    
+    
+    new:
+      title: "New book"
+      back: "Back to books"
+    
+    edit:
+      page_title: "Editing book"
+      heading: "Editing book"
+      show: "Show this book"
+      back: "Back to books"
+
   locale_switch:
-    to_japanese: "日本語へ"
+    to_japanese: "日本語"
     to_english: "English"
+
+  activerecord:
+      models:
+        book: "Book"
+      attributes:
+        book:
+          title: "Title"
+          memo: "Memo"
+          author: "Author"
+          picture: "Picture"
+
+  helpers:
+      submit:
+        book:
+          create: "Create Book"
+          update: "Update Book"
