@@ -4,17 +4,21 @@
 
 <h1><%= t("books.index.title") %></h1>
 
-<div id="books">
+<div id="books" class="index-items">
   <% @books.each do |book| %>
-    <%= render book %>
-    <p>
-      <%= link_to t("books.index.show"), book %>
-    </p>
+    <div class="index-item">
+      <%= render book %>
+      <p>
+        <%= link_to t("books.index.show"), book %>
+      </p>
+    </div>
   <% end %>
 </div>
 
 <p>
-  <%= link_to t("books.index.new"), new_book_path %>
+  <nav class="page-nav">
+    <%= link_to t("books.index.new"), new_book_path %>
+  </nav>
 </p>
 
 <ul>
