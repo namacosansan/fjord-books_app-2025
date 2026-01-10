@@ -1,12 +1,12 @@
-<% content_for :title, t("books.edit.title") %>
+<% content_for :title, t(".title") %>
 
-<h1><%= t("books.edit.heading") %></h1>
+<h1><%= t(".heading") %></h1>
 
 <%= render "form", book: @book %>
 
 <br>
 
 <nav class="page-nav">
-  <%= link_to t("books.edit.show"), @book %> |
-  <%= link_to t("books.edit.back"), books_path %>
+  <%= link_to t(".show"), @book %> |
+  <%= link_to t(".back"), books_path %>
 </nav>
