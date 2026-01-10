@@ -1,5 +1,8 @@
 en:
   books:
+    common:
+      back_to_index: "Back to list"
+
     index:
       title: "Books"
       new: "New Book"
@@ -7,18 +10,15 @@ en:
 
     show:
       edit: "Edit this book"
-      back: "Back to list"
       destroy: "Delete this book"
 
     new:
       title: "New Book"
-      back: "Back to list"
 
     edit:
       page_title: "Edit Book"
       heading: "Edit Book"
       show: "Book Details"
-      back: "Back to list"
 
     create:
       success: "Book was successfully created."
