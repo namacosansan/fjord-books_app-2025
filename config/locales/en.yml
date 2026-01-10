@@ -2,55 +2,47 @@ en:
   books:
     index:
       title: "Books"
-      new: "New book"
-      show: "Show this book"
-      
-    book:
-      title: Title
-      memo: Memo
-      author: Author
-      picture: Picture
-    
+      new: "New Book"
+      show: "Book Details"
+
     show:
       edit: "Edit this book"
-      back: "Back to books"
-      destroy: "Destroy this book"    
-    
+      back: "Back to list"
+      destroy: "Delete this book"
+
     new:
-      title: "New book"
-      back: "Back to books"
-    
+      title: "New Book"
+      back: "Back to list"
+
     edit:
-      page_title: "Editing book"
-      heading: "Editing book"
-      show: "Show this book"
-      back: "Back to books"
+      page_title: "Edit Book"
+      heading: "Edit Book"
+      show: "Book Details"
+      back: "Back to list"
 
     create:
       success: "Book was successfully created."
-
     update:
       success: "Book was successfully updated."
-      
     destroy:
-      success: "Book was successfully destroyed."
+      success: "Book was successfully deleted."
 
   locale_switch:
     to_japanese: "日本語"
     to_english: "English"
 
   activerecord:
-      models:
-        book: "Book"
-      attributes:
-        book:
-          title: "Title"
-          memo: "Memo"
-          author: "Author"
-          picture: "Picture"
+    models:
+      book: "Book"
+    attributes:
+      book:
+        title: "Title"
+        memo: "Memo"
+        author: "Author"
+        picture: "Picture"
 
   helpers:
-      submit:
-        book:
-          create: "Create Book"
-          update: "Update Book"
+    submit:
+      book:
+        create: "Create Book"
+        update: "Update Book"

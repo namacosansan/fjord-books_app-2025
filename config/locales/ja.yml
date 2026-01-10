@@ -5,21 +5,15 @@ ja:
       new: "新しい本"
       show: "この本の詳細"
 
-    book:
-      title: "タイトル"
-      memo: "メモ"
-      author: "著者"
-      picture: "画像"
-    
     show:
       edit: "この本を編集"
       back: "一覧に戻る"
       destroy: "この本を削除"
-    
+
     new:
       title: "新しい本"
       back: "一覧に戻る"
-    
+
     edit:
       page_title: "本を編集"
       heading: "本を編集"
@@ -28,10 +22,8 @@ ja:
 
     create:
       success: "本を作成しました"
-
     update:
       success: "本を更新しました"
-      
     destroy:
       success: "本を削除しました"
 
