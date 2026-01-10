@@ -26,6 +26,15 @@ ja:
       show: "この本の詳細"
       back: "一覧に戻る"
 
+    create:
+      success: "本を作成しました"
+
+    update:
+      success: "本を更新しました"
+      
+    destroy:
+      success: "本を削除しました"
+
   locale_switch:
     to_japanese: "日本語"
     to_english: "English"
