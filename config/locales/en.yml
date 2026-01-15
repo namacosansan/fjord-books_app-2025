@@ -1,7 +1,13 @@
 en:
   common:
     back_to_index: "Back to list"
-  
+    create:
+      success: "%{name} was successfully created."
+    update:
+      success: "%{name} was successfully updated."
+    destroy:
+      success: "%{name} was successfully deleted."
+
   books:
     index:
       title: "Books"
@@ -19,13 +25,6 @@ en:
       page_title: "Edit Book"
       heading: "Edit Book"
       show: "Book Details"
-
-    create:
-      success: "Book was successfully created."
-    update:
-      success: "Book was successfully updated."
-    destroy:
-      success: "Book was successfully deleted."
 
   locale_switch:
     to_japanese: "日本語"

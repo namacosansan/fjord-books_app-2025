@@ -1,6 +1,12 @@
 ja:
   common:
     back_to_index: "一覧に戻る"
+    create:
+      success: "%{name}を作成しました。"
+    update:
+      success: "%{name}を更新しました。"
+    destroy:
+      success: "%{name}を削除しました。"
   
   books:
     index:
@@ -19,13 +25,6 @@ ja:
       page_title: "本を編集"
       heading: "本を編集"
       show: "この本の詳細"
-
-    create:
-      success: "本を作成しました"
-    update:
-      success: "本を更新しました"
-    destroy:
-      success: "本を削除しました"
 
   locale_switch:
     to_japanese: "日本語"
