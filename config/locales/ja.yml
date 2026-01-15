@@ -1,8 +1,8 @@
 ja:
+  common:
+    back_to_index: "一覧に戻る"
+  
   books:
-    common:
-      back_to_index: "一覧に戻る"
-
     index:
       title: "本の一覧"
       new: "新しい本"

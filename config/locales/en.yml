@@ -1,8 +1,8 @@
 en:
+  common:
+    back_to_index: "Back to list"
+  
   books:
-    common:
-      back_to_index: "Back to list"
-
     index:
       title: "Books"
       new: "New Book"
