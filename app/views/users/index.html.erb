@@ -1,0 +1,16 @@
+<h1>ユーザー一覧</h1>
+
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= link_to user.email, user_path(user) %>
+
+      <% if user == current_user %>
+        （<%= link_to "アカウント編集", edit_user_registration_path %>）
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= paginate @users %>
+
