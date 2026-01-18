@@ -36,13 +36,3 @@
 /public/uploads
 
 .env
-
-# macOS
-.DS_Store
-
-# Bundler
-/vendor/bundle
-
-# Editor backup files
-*~
-.*.un~
