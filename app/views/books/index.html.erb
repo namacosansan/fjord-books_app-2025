@@ -1,29 +1,16 @@
 <p style="color: green"><%= notice %></p>
 
-<% content_for :title, t(".title") %>
+<% content_for :title, "Books" %>
 
-<h1><%= t(".title") %></h1>
+<h1>Books</h1>
 
-<div id="books" class="index-items">
+<div id="books">
   <% @books.each do |book| %>
-    <div class="index-item">
-      <%= render book %>
-      <p>
-        <%= link_to t(".show"), book %>
-      </p>
-    </div>
+    <%= render book %>
+    <p>
+      <%= link_to "Show this book", book %>
+    </p>
   <% end %>
 </div>
 
-<p>
-  <nav class="page-nav">
-    <%= link_to t(".new"), new_book_path %>
-  </nav>
-</p>
-
-<ul>
-  <li><%= link_to t("locale_switch.to_japanese"), books_path(locale: :ja) %></li>
-  <li><%= link_to t("locale_switch.to_english"),  books_path(locale: :en) %></li>
-</ul>
-
-<p>現在のロケール: <%= I18n.locale %></p>
+<%= link_to "New book", new_book_path %>
