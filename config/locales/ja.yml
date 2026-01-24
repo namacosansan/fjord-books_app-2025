@@ -1,0 +1,47 @@
+ja:
+  common:
+    back_to_index: "一覧に戻る"
+    create:
+      success: "%{name}を作成しました。"
+    update:
+      success: "%{name}を更新しました。"
+    destroy:
+      success: "%{name}を削除しました。"
+  
+  books:
+    index:
+      title: "本の一覧"
+      new: "新しい本"
+      show: "この本の詳細"
+
+    show:
+      edit: "この本を編集"
+      destroy: "この本を削除"
+
+    new:
+      title: "新しい本"
+
+    edit:
+      page_title: "本を編集"
+      heading: "本を編集"
+      show: "この本の詳細"
+
+  locale_switch:
+    to_japanese: "日本語"
+    to_english: "English"
+
+  activerecord:
+    models:
+      book: "本"
+    attributes:
+      book:
+        title: "タイトル"
+        memo: "メモ"
+        author: "著者"
+        picture: "画像"
+
+  helpers:
+    submit:
+      book:
+        create: "本を登録"
+        update: "本を更新"
