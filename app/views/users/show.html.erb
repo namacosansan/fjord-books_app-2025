@@ -1,12 +1,12 @@
 <h1><%= t('views.common.title_show', name: User.model_name.human) %></h1>
 
 <div class="show-item">
+  <% if @user.avatar.attached? %>
+  <%= image_tag @user.avatar %>
+  <% end %>
+
   <%= render @user %>
 </div>
-
-<% if @user.avatar.attached? %>
-  <%= image_tag @user.avatar %>
-<% end %>
 
 <nav class="page-nav">
   <% if current_user == @user %>
