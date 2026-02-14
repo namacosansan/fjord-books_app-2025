@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  get "users/index"
-  get "users/show"
   devise_for :users
   resources :books
   resources :users, only: %i[index show]
