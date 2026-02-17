@@ -1,6 +1,20 @@
 ---
 ja:
+  devise:
+    registrations:
+      edit:
+        title: ユーザー編集
+  common:
+    back: 戻る
   activerecord:
+    models:
+      user: ユーザー
+    attributes:
+      user:
+        email: メールアドレス
+        postal_code: 郵便番号
+        address: 住所
+        profile: プロフィール
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
