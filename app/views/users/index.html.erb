@@ -4,7 +4,7 @@
   <% @users.each do |user| %>
     <div class="index-item">
       <% if user.avatar.attached? %>
-      <%= image_tag user.avatar.variant(resize_to_limit: [100, 100]) %>
+       <%= image_tag user.avatar.variant(:thumb) %>
       <% end %>
       <%= render user %>
       <p>
