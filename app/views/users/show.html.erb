@@ -1,0 +1,8 @@
+<h1><%= t("views.common.title_show", name: User.model_name.human) %></h1>
+
+<p><strong><%= User.human_attribute_name(:email) %>:</strong> <%= @user.email %></p>
+<p><strong><%= User.human_attribute_name(:postal_code) %>:</strong> <%= @user.postal_code %></p>
+<p><strong><%= User.human_attribute_name(:address) %>:</strong> <%= @user.address %></p>
+<p><strong><%= User.human_attribute_name(:profile) %>:</strong> <%= @user.profile %></p>
+
+<p><%= link_to t("views.common.back", name: User.model_name.human), users_path %></p>

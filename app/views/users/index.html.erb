@@ -1,0 +1,17 @@
+<h1><%= t("views.common.title_index", name: User.model_name.human) %></h1>
+
+<ul>
+  <% @users.each do |user| %>
+    <li>
+      <%= link_to user.email, user_path(user) %>
+
+      <% if user == current_user %>
+       （<%= link_to t("views.common.edit",
+              name: User.model_name.human),
+              edit_user_registration_path %>）
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= paginate @users %>

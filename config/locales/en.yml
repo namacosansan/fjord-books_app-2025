@@ -1,12 +1,32 @@
 ---
 en:
+  devise:
+    registrations:
+      edit:
+        title: Edit User
+  common:
+    back: Back
   activerecord:
+    models:
+      user: User
+      book: Book
+    attributes:
+      user:
+        email: Email
+        postal_code: Postal Code
+        address: Address
+        profile: Profile
+      book:
+        author: Author
+        memo: Memo
+        picture: Image
+        title: Title
     errors:
       messages:
-        record_invalid: 'Validation failed: %{errors}'
+        record_invalid: "Validation failed: %{errors}"
         restrict_dependent_destroy:
-          has_one: Cannot delete record because a dependent %{record} exists
-          has_many: Cannot delete record because dependent %{record} exist
+          has_one: "Cannot delete record because a dependent %{record} exists"
+          has_many: "Cannot delete record because dependent %{record} exist"
   date:
     abbr_day_names:
     - Sun
@@ -231,6 +251,14 @@ en:
       title_edit: "Editing %{name}"
       error: error
       validation_error: "%{errors} prohibited this %{name} from being saved"
+    app:
+      title: Books App
+    navigation:
+      books: Books
+      users: Users
+      login: Log in
+      logout: Log out
+      sign_up: Sign up
   controllers:
     common:
       notice_create: "%{name} was successfully created."

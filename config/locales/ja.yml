@@ -1,9 +1,29 @@
 ---
 ja:
+  devise:
+    registrations:
+      edit:
+        title: ユーザー編集
+  common:
+    back: 戻る
   activerecord:
+    models:
+      user: ユーザー
+      book: 本
+    attributes:
+      user:
+        email: メールアドレス
+        postal_code: 郵便番号
+        address: 住所
+        profile: プロフィール
+      book:
+        author: 著者
+        memo: メモ
+        picture: 画像
+        title: タイトル
     errors:
       messages:
-        record_invalid: 'バリデーションに失敗しました: %{errors}'
+        record_invalid: "バリデーションに失敗しました: %{errors}"
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
@@ -193,8 +213,17 @@ ja:
       title_index: "%{name}の一覧"
       title_new: "%{name}の新規作成"
       title_edit: "%{name}の編集"
+      title_show: "%{name}の詳細"
       error: エラー
       validation_error: "%{errors}があるため、この%{name}は保存できませんでした"
+    app:
+      title: Books App
+    navigation:
+      books: 本一覧
+      users: ユーザー一覧
+      login: ログイン
+      logout: ログアウト
+      sign_up: 新規登録
     pagination:
       first: '« 最初'
       last: '最後 »'
