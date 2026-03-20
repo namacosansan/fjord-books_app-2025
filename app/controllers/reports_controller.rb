@@ -20,8 +20,8 @@ class ReportsController < ApplicationController
 
   # POST /reports or /reports.json
   def create
-    @report = Report.new(report_params)
-
+    @report = current_user.reports.build(report_params)
+    
     respond_to do |format|
       if @report.save
         format.html { redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human) }
@@ -63,6 +63,9 @@ class ReportsController < ApplicationController
     @report = Report.find(params.expect(:id))
   end
 
+  def authorize_report_owner!
+    redirect_to reports_path, alert: '権限がありません' unless @report.user == current_user
+  end
   # Only allow a list of trusted parameters through.
   def report_params
     params.expect(report: %i[title body])
