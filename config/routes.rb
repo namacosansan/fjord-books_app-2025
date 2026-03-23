@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   resources :books
   resources :users, only: %i(index show)
   resources :reports
+  resources :reports do
+    # /reports/:report_id/comments
+    resources :comments, only: [:create, :destroy]
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

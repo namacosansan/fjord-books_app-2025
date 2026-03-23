@@ -4,6 +4,18 @@
   <%= render @report %>
 </div>
 
+<div class="show-item">
+  <h2>コメント</h2>
+
+  <% @report.comments.each do |comment| %>
+    <%= render comment %>
+    <%= link_to "削除",[@report, comment], data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
+  <% end %>
+
+  <h3>コメントを書く</h3>
+  <%= render 'comments/form', commentable: @report %>
+</div>
+
 <nav class="page-nav">
   <%= link_to t('views.common.edit', name: Report.model_name.human.downcase), edit_report_path(@report) %> |
   <%= link_to t('views.common.back', name: i18n_pluralize(Report.model_name.human.downcase)), reports_path %>
