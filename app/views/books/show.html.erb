@@ -2,6 +2,20 @@
 
 <div class="show-item">
   <%= render @book %>
+</div>
+
+<div class="show-item">
+  <h2>コメント</h2>
+
+  <% if @book.comments.any? %>
+    <% @book.comments.each do |comment| %>
+      <%= render comment %>
+    <% end %>
+  <% else %>
+    <p>まだコメントはありません。</p>
+  <% end %>
+
+  <h3>コメントを書く</h3>
   <%= render 'comments/form', commentable: @book %>
 </div>
 

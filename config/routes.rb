@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     # /reports/:report_id/comments
     resources :comments, only: [:create, :destroy]
   end
+  resources :books do
+    # /reports/:report_id/comments
+    resources :comments, only: [:create, :destroy]
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
