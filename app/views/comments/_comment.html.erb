@@ -5,6 +5,11 @@
               [comment.commentable, comment],
               data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
   <% end %>
-  <p><%= comment.user.name %></p>
+  <% if comment.user.name.present? %>
+    <%= comment.user.name %>
+  <% else %>
+    <%= comment.user.email %>
+  <% end %>
+  <p><%= comment.created_at.strftime("%Y/%m/%d %H:%M") %></p>
 </div>
-  
+ 
