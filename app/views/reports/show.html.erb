@@ -16,7 +16,9 @@
   <% end %>
 
   <h3>コメントを書く</h3>
-  <%= render 'comments/form', commentable: @report %>
+  <%= render "comments/form",
+           commentable: @report,
+           comment: (@comment || Comment.new) %>
 </div>
 
 <nav class="page-nav">

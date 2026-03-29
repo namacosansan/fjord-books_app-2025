@@ -10,6 +10,6 @@
   <% else %>
     <%= comment.user.email %>
   <% end %>
-  <p><%= comment.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+  <p><%= comment.created_at&.strftime("%Y/%m/%d %H:%M") %></p>
 </div>
  

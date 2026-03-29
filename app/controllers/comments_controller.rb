@@ -10,8 +10,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_back fallback_location: root_path, notice: "コメントを追加しました。"
     else
-      redirect_back fallback_location: root_path,
-                    alert: @comment.errors.full_messages.join(", ")
+      render_commentable_show_with_errors
     end
   end
 
@@ -50,5 +49,15 @@ class CommentsController < ApplicationController
 
   def authorize_comment_owner!
     redirect_to reports_path, alert: 'コメントを消す権限がありません' unless @comment.user == current_user
+  end
+
+  def render_commentable_show_with_errors
+    if @commentable.is_a?(Book)
+      @book = @commentable
+      render 'books/show', status: :unprocessable_entity
+    elsif @commentable.is_a?(Report)
+      @report = @commentable
+      render 'reports/show', status: :unprocessable_entity
+    end
   end
 end
