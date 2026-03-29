@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CommentsController < ApplicationController
   before_action :set_commentable
   before_action :set_comment, only: %i[destroy]
@@ -18,7 +20,7 @@ class CommentsController < ApplicationController
     comment = @commentable.comments.find(params[:id])
     comment.destroy
     redirect_back fallback_location: root_path, notice: t('comments.notices.deleted')
-	end
+  end
 
   private
 
@@ -27,11 +29,11 @@ class CommentsController < ApplicationController
     id    = nil
 
     params.each do |name, value|
-      if name.to_s =~ /(.+)_id$/
-        klass = $1.classify.constantize
-        id    = value
-        break
-      end
+      next unless name.to_s =~ /(.+)_id$/
+
+      klass = ::Regexp.last_match(1).classify.constantize
+      id    = value
+      break
     end
 
     @commentable = klass.find(id)
