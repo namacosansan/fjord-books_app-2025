@@ -5,20 +5,20 @@
 </div>
 
 <div class="show-item">
-  <h2>コメント</h2>
+  <h2><%= t('comments.title') %></h2>
 
   <% if @book.comments.any? %>
     <% @book.comments.each do |comment| %>
       <%= render comment %>
     <% end %>
   <% else %>
-    <p>まだコメントはありません。</p>
+    <p><%= t('comments.empty') %></p>
   <% end %>
 
-  <h3>コメントを書く</h3>
+  <h3><%= t('comments.new') %></h3>
   <%= render "comments/form",
-           commentable: @book,
-           comment: (@comment || Comment.new) %>
+             commentable: @book,
+             comment: (@comment || Comment.new) %>
 </div>
 
 <nav class="page-nav">

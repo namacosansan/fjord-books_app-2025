@@ -3,6 +3,8 @@ ja:
     models:
       book: 本
       user: ユーザ
+      report: 日報
+      comment: コメント
 
     attributes:
       book:
@@ -16,3 +18,21 @@ ja:
         address: 住所
         self_introduction: 自己紹介文
         avatar: ユーザ画像
+      report:
+        title: タイトル
+        body: 本文
+      comment:
+        body: 本文
+
+  comments:
+    title: コメント
+    empty: まだコメントはありません。
+    new: コメントを書く
+    submit: コメントする
+    delete: 削除
+    delete_confirm: 削除しますか？
+    notices:
+      created: コメントを追加しました。
+      deleted: コメントを削除しました。
+    alerts:
+      forbidden: コメントを消す権限がありません

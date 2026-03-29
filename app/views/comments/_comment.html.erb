@@ -1,9 +1,9 @@
 <div class="comment">
   <p><%= comment.body %></p>
   <% if comment.user == current_user %>
-  <%= link_to "削除",
+  <%= link_to t('comments.delete'),
               [comment.commentable, comment],
-              data: { turbo_method: :delete, turbo_confirm: "削除しますか？" } %>
+              data: { turbo_method: :delete, turbo_confirm: t('comments.delete_confirm')} %>
   <% end %>
   <% if comment.user.name.present? %>
     <%= comment.user.name %>

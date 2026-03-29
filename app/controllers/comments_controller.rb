@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_back fallback_location: root_path, notice: "コメントを追加しました。"
+      redirect_back fallback_location: root_path, notice: t('comments.notices.created')
     else
       render_commentable_show_with_errors
     end
@@ -17,20 +17,18 @@ class CommentsController < ApplicationController
   def destroy
     comment = @commentable.comments.find(params[:id])
     comment.destroy
-    redirect_back fallback_location: root_path, notice: "コメントを削除しました。"
+    redirect_back fallback_location: root_path, notice: t('comments.notices.deleted')
 	end
 
   private
 
-  # ★ ポイント：ここで「どのモデルに紐づくコメントか」を判定する
   def set_commentable
-    # params の中から *_id を探す汎用パターン
     klass = nil
     id    = nil
 
     params.each do |name, value|
       if name.to_s =~ /(.+)_id$/
-        klass = $1.classify.constantize  # "report" → Report
+        klass = $1.classify.constantize
         id    = value
         break
       end
@@ -48,7 +46,7 @@ class CommentsController < ApplicationController
   end
 
   def authorize_comment_owner!
-    redirect_to reports_path, alert: 'コメントを消す権限がありません' unless @comment.user == current_user
+    redirect_to reports_path, alert: t('comments.alerts.forbidden') unless @comment.user == current_user
   end
 
   def render_commentable_show_with_errors
