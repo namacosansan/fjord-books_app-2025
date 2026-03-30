@@ -1,24 +1,18 @@
 <div class="comment">
-  <table>
-    <tr>
-      <td>
-        <strong><%= comment.user.name.presence || comment.user.email %></strong>
-        <span><%= l comment.created_at, format: :short %></span>
-      </td>
+  <% if comment.user.name.present? %>
+    <%= comment.user.name %>
+  <% else %>
+    <%= comment.user.email %>
+  <% end %>
 
-      <% if comment.user == current_user %>
-        <td>
-          <%= link_to '削除',
-                      [comment.commentable, comment],
-                      data: { turbo_method: :delete, turbo_confirm: '削除しますか？' } %>
-        </td>
-      <% end %>
-    </tr>
-  </table>
+  <%= comment.created_at&.strftime('%Y/%m/%d %H:%M') %>
 
-  <div>
-    <%= simple_format(comment.body) %>
-  </div>
+  <% if comment.user == current_user %>
+    <%= link_to t('comments.delete'),
+                [comment.commentable, comment],
+                data: { turbo_method: :delete, turbo_confirm: t('comments.delete_confirm') } %>
+  <% end %>
 
+  <p><%= comment.body %></p>
   <hr width="60%" align="left" color="#ddd">
 </div>
