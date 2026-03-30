@@ -17,8 +17,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment = @commentable.comments.find(params[:id])
-    comment.destroy
+    @comment.destroy
     redirect_back fallback_location: root_path, notice: t('comments.notices.deleted')
   end
 
@@ -48,7 +47,7 @@ class CommentsController < ApplicationController
   end
 
   def authorize_comment_owner!
-    redirect_to reports_path, alert: t('comments.alerts.forbidden') unless @comment.user == current_user
+    redirect_to @commentable, alert: t('comments.alerts.forbidden') unless @comment.user == current_user
   end
 
   def render_commentable_show_with_errors
