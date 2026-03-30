@@ -36,3 +36,8 @@ ja:
       deleted: コメントを削除しました。
     alerts:
       forbidden: コメントを消す権限がありません
+  
+  reports:
+    alerts:
+      forbidden: 権限がありません
+

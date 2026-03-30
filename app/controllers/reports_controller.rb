@@ -2,6 +2,7 @@
 
 class ReportsController < ApplicationController
   before_action :set_report, only: %i[show edit update destroy]
+  before_action :authorize_report_owner!, only: %i[edit update destroy]  
 
   # GET /reports
   def index
@@ -50,6 +51,10 @@ class ReportsController < ApplicationController
 
   def set_report
     @report = Report.find(params.expect(:id))
+  end
+
+  def authorize_report_owner!
+    redirect_to reports_path, alert: t('reports.alerts.forbidden') unless @report.user == current_user
   end
 
   def report_params
