@@ -7,8 +7,8 @@
 <div class="show-item">
   <h2><%= t('comments.title') %></h2>
 
-  <% if @book.comments.any? %>
-    <% @book.comments.each do |comment| %>
+  <% if @comments.any? %>
+    <% @comments.each do |comment| %>
       <%= render comment %>
     <% end %>
   <% else %>
