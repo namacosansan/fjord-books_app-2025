@@ -1,0 +1,16 @@
+<div>
+  <h2><%= t('comments.title') %></h2>
+
+  <% if comments.any? %>
+    <% comments.each do |comment| %>
+      <%= render comment %>
+    <% end %>
+  <% else %>
+    <p><%= t('comments.empty') %></p>
+  <% end %>
+
+  <h3><%= t('comments.new') %></h3>
+  <%= render "comments/form",
+             commentable: commentable,
+             comment: comment %>
+</div>

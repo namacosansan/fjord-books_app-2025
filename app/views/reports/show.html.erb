@@ -4,26 +4,14 @@
   <%= render @report %>
 </div>
 
-<div>
-  <h2><%= t('comments.title') %></h2>
-
-  <% if @comments.any? %>
-    <% @comments.each do |comment| %>
-      <%= render comment %>
-    <% end %>
-  <% else %>
-    <p><%= t('comments.empty') %></p>
-  <% end %>
-
-  <h3><%= t('comments.new') %></h3>
-  <%= render "comments/form",
-             commentable: @report,
-             comment: (@comment || Comment.new) %>
-</div>
-
 <nav class="page-nav">
   <%= link_to t('views.common.edit', name: Report.model_name.human.downcase), edit_report_path(@report) %> |
   <%= link_to t('views.common.back', name: i18n_pluralize(Report.model_name.human.downcase)), reports_path %>
 
   <%= button_to t('views.common.destroy', name: Report.model_name.human.downcase), @report, method: :delete %>
 </nav>
+
+<%= render "comments/comments",
+           commentable: @report,
+           comments: @comments,
+           comment: (@comment || Comment.new) %>

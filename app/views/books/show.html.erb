@@ -4,26 +4,14 @@
   <%= render @book %>
 </div>
 
-<div class="show-item">
-  <h2><%= t('comments.title') %></h2>
-
-  <% if @comments.any? %>
-    <% @comments.each do |comment| %>
-      <%= render comment %>
-    <% end %>
-  <% else %>
-    <p><%= t('comments.empty') %></p>
-  <% end %>
-
-  <h3><%= t('comments.new') %></h3>
-  <%= render "comments/form",
-             commentable: @book,
-             comment: (@comment || Comment.new) %>
-</div>
-
 <nav class="page-nav">
   <%= link_to t('views.common.edit', name: Book.model_name.human.downcase), edit_book_path(@book) %> |
   <%= link_to t('views.common.back', name: i18n_pluralize(Book.model_name.human.downcase)), books_path %>
 
   <%= button_to t('views.common.destroy', name: Book.model_name.human.downcase), @book, method: :delete %>
 </nav>
+
+<%= render "comments/comments",
+           commentable: @book,
+           comments: @comments,
+           comment: (@comment || Comment.new) %>
