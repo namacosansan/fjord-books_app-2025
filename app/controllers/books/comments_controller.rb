@@ -9,7 +9,7 @@ class Books::CommentsController < ApplicationController
     if @comment.save
       redirect_back fallback_location: root_path, notice: t('comments.notices.created')
     else
-      render :new, status: :unprocessable_entity
+      render_book_show_with_errors
     end
   end
 
@@ -30,5 +30,10 @@ class Books::CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:body)
+  end
+
+  def render_book_show_with_errors
+    @comments = @book.comments.order(created_at: :desc)
+    render 'books/show', status: :unprocessable_content
   end
 end

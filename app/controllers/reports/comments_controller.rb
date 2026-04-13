@@ -9,7 +9,7 @@ class Reports::CommentsController < ApplicationController
     if @comment.save
       redirect_back fallback_location: root_path, notice: t('comments.notices.created')
     else
-      render :new, status: :unprocessable_entity
+      render_report_show_with_errors
     end
   end
 
@@ -30,5 +30,10 @@ class Reports::CommentsController < ApplicationController
 
   def comment_params
     params.require(:comment).permit(:body)
+  end
+
+  def render_report_show_with_errors
+    @comments = @report.comments.order(created_at: :desc)
+    render 'reports/show', status: :unprocessable_content
   end
 end

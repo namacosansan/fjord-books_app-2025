@@ -3,7 +3,7 @@
 
   <% if comments.any? %>
     <% comments.each do |comment| %>
-      <%= render comment %>
+      <%= render 'comments/comment', comment: comment %>
     <% end %>
   <% else %>
     <p><%= t('comments.empty') %></p>
