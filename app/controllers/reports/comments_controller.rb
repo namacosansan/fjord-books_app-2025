@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Reports::CommentsController < ApplicationController
   before_action :set_report
   before_action :set_comment, only: %i[destroy]
@@ -5,7 +7,7 @@ class Reports::CommentsController < ApplicationController
   def create
     @comment = @report.comments.build(comment_params)
     @comment.user = current_user
-    
+
     if @comment.save
       redirect_back fallback_location: root_path, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
@@ -26,6 +28,7 @@ class Reports::CommentsController < ApplicationController
 
   def set_comment
     @comment = @report.comments.find(params[:id])
+    redirect_to @report, alert: t('comments.alerts.forbidden') unless @comment
   end
 
   def comment_params

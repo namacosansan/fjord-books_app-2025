@@ -246,3 +246,8 @@ ja:
     submit: コメントする
     delete: 削除
     delete_confirm: 削除しますか？
+    alerts:
+      forbidden: コメントを削除する権限がありません
+  reports:
+    alerts:
+      forbidden: この日報を編集・削除する権限がありません
