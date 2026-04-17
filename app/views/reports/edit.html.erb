@@ -1,4 +1,4 @@
-<% title = t('views.common.title_edit', name: Report.model_name.human.downcase) %>
+<% title = t('views.common.title_edit', name: Report.model_name.human) %>
 <% content_for :title, title %>
 
 <h1><%= title %></h1>
@@ -8,6 +8,6 @@
 <br>
 
 <nav class="page-nav">
-  <%= link_to t('views.common.show', name: Report.model_name.human.downcase), @report %> |
-  <%= link_to t('views.common.back', name: i18n_pluralize(Report.model_name.human.downcase)), reports_path %>
+  <%= link_to t('views.common.show', name: Report.model_name.human), @report %> |
+  <%= link_to t('views.common.back', name: Report.model_name.human), reports_path %>
 </nav>

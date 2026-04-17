@@ -7,7 +7,7 @@ class Reports::CommentsController < ApplicationController
     @comment.user = current_user
     
     if @comment.save
-      redirect_back fallback_location: root_path, notice: t('comments.notices.created')
+      redirect_back fallback_location: root_path, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
       render_report_show_with_errors
     end
@@ -15,7 +15,7 @@ class Reports::CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    redirect_back fallback_location: root_path, notice: t('comments.notices.deleted')
+    redirect_back fallback_location: root_path, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
   private

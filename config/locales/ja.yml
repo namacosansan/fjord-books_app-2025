@@ -7,6 +7,28 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      book: 本
+      report: 日報
+      user: ユーザ
+      comment: コメント
+    attributes:
+      book:
+        author: 著者
+        memo: メモ
+        picture: 画像
+        title: タイトル
+      report:
+        title: タイトル
+        body: 本文
+      comment:
+        body: 本文
+      user:
+        name: 氏名
+        postal_code: 郵便番号
+        address: 住所
+        self_introduction: 自己紹介文
+        avatar: ユーザ画像
   date:
     abbr_day_names:
     - 日
@@ -217,3 +239,10 @@ ja:
     registrations:
       edit:
         title: "アカウント編集"
+  comments:
+    title: コメント
+    empty: まだコメントはありません
+    new: コメントを書く
+    submit: コメントする
+    delete: 削除
+    delete_confirm: 削除しますか？

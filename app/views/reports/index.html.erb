@@ -1,4 +1,4 @@
-<% title = t('views.common.title_index', name: i18n_pluralize(Report.model_name.human)) %>
+<% title = t('views.common.title_index', name: Report.model_name.human) %>
 <% content_for :title, title %>
 
 <h1><%= title %></h1>
@@ -8,7 +8,7 @@
     <div class="index-item">
       <%= render report %>
       <p>
-        <%= link_to t('views.common.show', name: Report.model_name.human.downcase), report %>
+        <%= link_to t('views.common.show', name: Report.model_name.human), report %>
       </p>
     </div>
   <% end %>
@@ -17,5 +17,5 @@
 <%= paginate @reports %>
 
 <nav class="page-nav">
-  <%= link_to t('views.common.new', name: Report.model_name.human.downcase), new_report_path %>
+  <%= link_to t('views.common.new', name: Report.model_name.human), new_report_path %>
 </nav>
