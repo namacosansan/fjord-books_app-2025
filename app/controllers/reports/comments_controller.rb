@@ -27,7 +27,7 @@ class Reports::CommentsController < ApplicationController
   end
 
   def set_comment
-    @comment = @report.comments.find(params[:id])
+    @comment = @report.comments.find_by(id: params[:id])
     redirect_to @report, alert: t('comments.alerts.forbidden') unless @comment
   end
 

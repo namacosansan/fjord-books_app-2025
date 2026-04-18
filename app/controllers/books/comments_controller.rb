@@ -27,8 +27,8 @@ class Books::CommentsController < ApplicationController
   end
 
   def set_comment
-    @comment = @book.comments.find(params[:id])
-    redirect_to @report, alert: t('comments.alerts.forbidden') unless @comment
+    @comment = @book.comments.find_by(id: params[:id])
+    redirect_to @book, alert: t('comments.alerts.forbidden') unless @comment
   end
 
   def comment_params
