@@ -8,7 +8,7 @@ class ReportsController < ApplicationController
   end
 
   def show
-    @report = Report.find(params.expect(:id))
+    @report = Report.find(params[:id])
     @comments = @report.comments.order(created_at: :desc)
   end
 
@@ -44,7 +44,7 @@ class ReportsController < ApplicationController
   private
 
   def set_own_report
-    @report = current_user.reports.find_by(id: params.expect(:id))
+    @report = current_user.reports.find_by(id: params[:id])
     redirect_to reports_path, alert: t('reports.alerts.forbidden') unless @report
   end
 
