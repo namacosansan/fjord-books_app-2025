@@ -1,4 +1,4 @@
-<% title = t('views.common.title_new', name: Book.model_name.human) %>
+<% title = t('views.common.title_new', name: Book.model_name.human.downcase) %>
 <% content_for :title, title %>
 
 <h1><%= title %></h1>
@@ -8,5 +8,5 @@
 <br>
 
 <nav class="page-nav">
-  <%= link_to t('views.common.back', name: Book.model_name.human), books_path %>
+  <%= link_to t('views.common.back', name: i18n_pluralize(Book.model_name.human.downcase)), books_path %>
 </nav>
