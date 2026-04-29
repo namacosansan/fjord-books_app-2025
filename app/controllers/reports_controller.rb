@@ -44,8 +44,7 @@ class ReportsController < ApplicationController
   private
 
   def set_own_report
-    @report = current_user.reports.find_by(id: params[:id])
-    redirect_to reports_path, alert: t('reports.alerts.forbidden') unless @report
+    @report = current_user.reports.find(params[:id])
   end
 
   def report_params
