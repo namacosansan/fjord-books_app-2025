@@ -11,7 +11,8 @@ class Reports::CommentsController < ApplicationController
     if @comment.save
       redirect_back fallback_location: root_path, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      render_report_show_with_errors
+      @comments = @report.comments.order(created_at: :desc)
+      render 'reports/show', status: :unprocessable_entity
     end
   end
 
@@ -27,16 +28,11 @@ class Reports::CommentsController < ApplicationController
   end
 
   def set_comment
-    @comment = @report.comments.find_by(id: params[:id])
-    redirect_to @report, alert: t('comments.alerts.forbidden') unless @comment
+    @comment = @report.comments.find(params[:id])
+    head :forbidden unless @comment.user == current_user
   end
 
   def comment_params
     params.require(:comment).permit(:body)
-  end
-
-  def render_report_show_with_errors
-    @comments = @report.comments.order(created_at: :desc)
-    render 'reports/show', status: :unprocessable_content
   end
 end

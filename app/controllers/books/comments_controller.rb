@@ -11,7 +11,8 @@ class Books::CommentsController < ApplicationController
     if @comment.save
       redirect_back fallback_location: root_path, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      render_book_show_with_errors
+      @comments = @book.comments.order(created_at: :desc)
+      render 'books/show', status: :unprocessable_entity
     end
   end
 
@@ -27,16 +28,11 @@ class Books::CommentsController < ApplicationController
   end
 
   def set_comment
-    @comment = @book.comments.find_by(id: params[:id])
-    redirect_to @book, alert: t('comments.alerts.forbidden') unless @comment
+    @comment = @book.comments.find(params[:id])
+    head :forbidden unless @comment.user == current_user
   end
 
   def comment_params
     params.require(:comment).permit(:body)
-  end
-
-  def render_book_show_with_errors
-    @comments = @book.comments.order(created_at: :desc)
-    render 'books/show', status: :unprocessable_content
   end
 end
