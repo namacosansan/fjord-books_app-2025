@@ -43,7 +43,7 @@ class ReportsController < ApplicationController
 
   def set_book
     @report = Report.find(params.expect(:id))
-  end 
+  end
 
   def set_own_report
     @report = current_user.reports.find(params[:id])
