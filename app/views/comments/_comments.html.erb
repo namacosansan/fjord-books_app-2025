@@ -2,8 +2,8 @@
   <h2><%= t('comments.title') %></h2>
 
   <% if comments.any? %>
-    <% comments.each do |comment| %>
-      <%= render 'comments/comment', comment: comment %>
+    <% comments.each do |each_comment| %>
+      <%= render 'comments/comment', comment: each_comment %>
     <% end %>
   <% else %>
     <p><%= t('comments.empty') %></p>
