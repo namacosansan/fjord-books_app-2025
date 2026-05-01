@@ -28,8 +28,8 @@ class Books::CommentsController < ApplicationController
   end
 
   def set_comment
-    @comment = @book.comments.find(params[:id])
-    head :forbidden unless @comment.user == current_user
+    @comment = @Book.comments.find(params[:id])
+    head :unprocessable_entity unless @comment.user == current_user
   end
 
   def comment_params

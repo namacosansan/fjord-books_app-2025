@@ -29,7 +29,7 @@ class Reports::CommentsController < ApplicationController
 
   def set_comment
     @comment = @report.comments.find(params[:id])
-    head :forbidden unless @comment.user == current_user
+    head :unprocessable_entity unless @comment.user == current_user
   end
 
   def comment_params
