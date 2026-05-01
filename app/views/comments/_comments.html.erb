@@ -10,7 +10,6 @@
   <% end %>
 
   <h3><%= t('comments.new') %></h3>
-  <%= render "comments/form",
-            commentable: commentable,
-            form_comment: commentable.comments.new %>
+  <%= render "comments/form", 
+              comment: commentable.comments.new %>
 </div>
