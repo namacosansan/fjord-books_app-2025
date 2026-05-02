@@ -9,7 +9,7 @@ class Reports::CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
-      redirect_back fallback_location: root_path, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
+      redirect_to @report, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
       @comments = @report.comments.order(created_at: :desc)
       render 'reports/show', status: :unprocessable_entity
@@ -18,7 +18,7 @@ class Reports::CommentsController < ApplicationController
 
   def destroy
     @comment.destroy
-    redirect_back fallback_location: root_path, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
+    redirect_to @report, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
   private
@@ -28,8 +28,7 @@ class Reports::CommentsController < ApplicationController
   end
 
   def set_comment
-    @comment = @report.comments.find(params[:id])
-    head :unprocessable_entity unless @comment.user == current_user
+    @comment = current_user.comments.find(params[:id])
   end
 
   def comment_params
