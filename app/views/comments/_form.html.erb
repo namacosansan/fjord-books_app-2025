@@ -1,4 +1,5 @@
-<%= form_with(model: [comment.commentable, comment]) do |form| %>  <% if form.object.errors.any? %>
+<%= form_with(model: [comment.commentable, comment]) do |form| %>
+  <% if form.object.errors.any? %>
     <div style="color: red">
       <ul>
         <% form.object.errors.each do |error| %>
