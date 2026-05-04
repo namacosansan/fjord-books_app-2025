@@ -2,7 +2,6 @@
 
 class Reports::CommentsController < ApplicationController
   before_action :set_report
-  before_action :set_comment, only: %i[destroy]
 
   def create
     @comment = @report.comments.build(comment_params)
@@ -17,7 +16,7 @@ class Reports::CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.destroy
+    @comment = current_user.comments.find(params[:id]).destroy
     redirect_to @report, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
@@ -25,10 +24,6 @@ class Reports::CommentsController < ApplicationController
 
   def set_report
     @report = Report.find(params[:report_id])
-  end
-
-  def set_comment
-    @comment = current_user.comments.find(params[:id])
   end
 
   def comment_params

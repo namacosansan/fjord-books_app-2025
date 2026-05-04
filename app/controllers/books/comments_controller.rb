@@ -2,7 +2,6 @@
 
 class Books::CommentsController < ApplicationController
   before_action :set_book
-  before_action :set_comment, only: %i[destroy]
 
   def create
     @comment = @book.comments.build(comment_params)
@@ -17,7 +16,7 @@ class Books::CommentsController < ApplicationController
   end
 
   def destroy
-    @comment.destroy
+    @comment = current_user.comments.find(params[:id]).destroy
     redirect_to @book, notice: t('controllers.common.notice_destroy', name: Comment.model_name.human)
   end
 
@@ -25,10 +24,6 @@ class Books::CommentsController < ApplicationController
 
   def set_book
     @book = Book.find(params[:book_id])
-  end
-
-  def set_comment
-    @comment = current_user.comments.find(params[:id])
   end
 
   def comment_params
