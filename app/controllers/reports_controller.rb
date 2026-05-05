@@ -8,7 +8,7 @@ class ReportsController < ApplicationController
   end
 
   def show
-    @report = Report.find(params.expect(:id))
+    @report = Report.find(params[:id])
   end
 
   def new
@@ -41,10 +41,6 @@ class ReportsController < ApplicationController
   end
 
   private
-
-  def set_book
-    @report = Report.find(params[:id])
-  end
 
   def set_own_report
     @report = current_user.reports.find(params[:id])
