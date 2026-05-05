@@ -41,7 +41,7 @@ class ReportsController < ApplicationController
   end
 
   private
-  
+
   def set_book
     @report = Report.find(params[:id])
   end

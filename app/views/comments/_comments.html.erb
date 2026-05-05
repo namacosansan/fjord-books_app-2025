@@ -1,5 +1,6 @@
 <div>
   <h2><%= t('comments.title') %></h2>
+  <% comments = commentable.comments.order(created_at: :desc) %>
 
   <% if comments.any? %>
     <% comments.each do |comment| %>

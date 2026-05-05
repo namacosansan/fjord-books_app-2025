@@ -15,6 +15,4 @@
   <% end %>
 </nav>
 
-<%= render 'comments/comments',
-           commentable: @report,
-           comments: @report.comments.order(created_at: :desc) %>
+<%= render 'comments/comments', commentable: @report %>
