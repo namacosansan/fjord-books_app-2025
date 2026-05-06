@@ -10,7 +10,6 @@ class Books::CommentsController < ApplicationController
     if @comment.save
       redirect_to @book, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      @comments = @book.comments.order(created_at: :desc)
       render 'books/show', status: :unprocessable_entity
     end
   end

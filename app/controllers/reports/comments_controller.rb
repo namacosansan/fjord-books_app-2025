@@ -10,7 +10,6 @@ class Reports::CommentsController < ApplicationController
     if @comment.save
       redirect_to @report, notice: t('controllers.common.notice_create', name: Comment.model_name.human)
     else
-      @comments = @report.comments.order(created_at: :desc)
       render 'reports/show', status: :unprocessable_entity
     end
   end
