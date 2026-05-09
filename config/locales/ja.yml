@@ -217,3 +217,10 @@ ja:
     registrations:
       edit:
         title: "アカウント編集"
+  comments:
+    title: コメント
+    empty: まだコメントはありません
+    new: コメントを書く
+    submit: コメントする
+    delete: 削除
+    delete_confirm: 削除しますか？
