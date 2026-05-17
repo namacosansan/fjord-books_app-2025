@@ -21,6 +21,7 @@ class ReportsController < ApplicationController
     @report = current_user.reports.new(report_params)
 
     if @report.save
+      mentions_from_content(@report)
       redirect_to @report, notice: t('controllers.common.notice_create', name: Report.model_name.human)
     else
       render :new, status: :unprocessable_entity
@@ -29,6 +30,7 @@ class ReportsController < ApplicationController
 
   def update
     if @report.update(report_params)
+      mentions_from_content(@report)
       redirect_to @report, notice: t('controllers.common.notice_update', name: Report.model_name.human)
     else
       render :edit, status: :unprocessable_entity
@@ -49,5 +51,12 @@ class ReportsController < ApplicationController
 
   def report_params
     params.expect(report: %i[user_id title content])
+  end
+
+  def mentions_from_content(report)
+    ids = report.content.to_s.scan(%r{/reports/(\d+)}).flatten.map(&:to_i)
+    ids.uniq!
+
+    report.mentioned_report_ids = ids
   end
 end
