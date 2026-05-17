@@ -18,11 +18,13 @@ class Report < ApplicationRecord
   has_many :active_mentions,
            class_name: 'ReportMention',
            foreign_key: :mentioning_report_id,
+           inverse_of: :mentioning_report,
            dependent: :destroy
 
   has_many :passive_mentions,
            class_name: 'ReportMention',
            foreign_key: :mentioned_report_id,
+           inverse_of: :mentioned_report,
            dependent: :destroy
 
   has_many :mentioned_reports,
