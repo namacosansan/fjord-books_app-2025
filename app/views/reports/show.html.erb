@@ -18,7 +18,7 @@
 </nav>
 
 <hr>
-<h3>この日報からリンクしている日報</h3>
+<h3>この日報が言及している日報</h3>
 <% if @report.mentioned_reports.any? %>
   <ul>
     <% @report.mentioned_reports.each do |r| %>
@@ -28,10 +28,10 @@
     <% end %>
   </ul>
 <% else %>
-  <p>リンクしている日報はありません。</p>
+  <p>この日報が言及している日報はありません。</p>
 <% end %>
 
-<h3>この日報にリンクしている日報（言及元）</h3>
+<h3>この日報が言及されている日報</h3>
 <% if @report.mentioning_reports.any? %>
   <ul>
     <% @report.mentioning_reports.each do |r| %>
@@ -41,5 +41,5 @@
     <% end %>
   </ul>
 <% else %>
-  <p>この日報を参照している日報はありません。</p>
+  <p>この日報が言及されている日報はありません。</p>
 <% end %>
