@@ -15,6 +15,12 @@ class Report < ApplicationRecord
     created_at.to_date
   end
 
+  def update_mentions_from_content
+    ids = content.to_s.scan(%r{/reports/(\d+)}).flatten.map(&:to_i).uniq
+
+    self.mentioned_report_ids = ids
+  end
+
   has_many :active_mentions,
            class_name: 'ReportMention',
            foreign_key: :mentioning_report_id,
