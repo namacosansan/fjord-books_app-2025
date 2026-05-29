@@ -23,7 +23,7 @@
   <ul>
     <% @report.mentioned_reports.each do |r| %>
       <li>
-        <%= link_to "#{r.id} #{r.title}", report_path(r) %>
+        <%= link_to r.title, report_path(r) %>
       </li>
     <% end %>
   </ul>
@@ -36,7 +36,7 @@
   <ul>
     <% @report.mentioning_reports.each do |r| %>
       <li>
-        <%= link_to "#{r.id} #{r.title}", report_path(r) %>
+        <%= link_to r.title, report_path(r) %>
       </li>
     <% end %>
   </ul>
