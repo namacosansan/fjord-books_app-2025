@@ -16,3 +16,30 @@
     <%= button_to t('views.common.destroy', name: Report.model_name.human.downcase), @report, method: :delete %>
   <% end %>
 </nav>
+
+<hr>
+<h3>この日報が言及している日報</h3>
+<% if @report.mentioned_reports.any? %>
+  <ul>
+    <% @report.mentioned_reports.each do |r| %>
+      <li>
+        <%= link_to r.title, report_path(r) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>この日報が言及している日報はありません。</p>
+<% end %>
+
+<h3>この日報が言及されている日報</h3>
+<% if @report.mentioning_reports.any? %>
+  <ul>
+    <% @report.mentioning_reports.each do |r| %>
+      <li>
+        <%= link_to r.title, report_path(r) %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>この日報が言及されている日報はありません。</p>
+<% end %>
