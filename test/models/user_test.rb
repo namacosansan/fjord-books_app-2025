@@ -19,4 +19,13 @@ class UserTest < ActiveSupport::TestCase
 
     assert_equal 'alice@example.com', user.name_or_email
   end
+  
+  test '名前がnilの場合はemailを返す' do
+    user = User.new(
+      name: nil,
+      email: 'alice@example.com'
+    )
+
+    assert_equal 'alice@example.com', user.name_or_email
+  end
 end

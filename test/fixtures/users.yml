@@ -9,3 +9,6 @@
 #
 #two: {}
 # column: value
+namaco:
+  name: "Namaco"
+  email: "namaco@example.com"

@@ -9,3 +9,14 @@
 #   user: two
 #   title: MyString
 #   content: MyText
+
+report_a:
+  title: "今日の学習"
+  content: "Rubyの勉強をしました"
+  user: namaco
+
+report_b:
+  id: 100
+  title: "昨日の学習"
+  content: "Railsの勉強をしました"
+  user: namaco
