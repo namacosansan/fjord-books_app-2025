@@ -3,5 +3,24 @@
 require 'test_helper'
 
 class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
-  driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]
+  driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400] do |options|
+    options.add_preference('profile.password_manager_leak_detection', false)
+  end
+
+  def after_teardown
+    Capybara.current_session.driver.quit
+    super
+  end
+
+  private
+
+  def login
+    visit new_user_session_path
+
+    fill_in 'Eメール', with: 'namaco@example.com'
+    fill_in 'パスワード', with: 'password'
+
+    click_button 'ログイン'
+    assert_text 'Namaco としてログイン中'
+  end
 end

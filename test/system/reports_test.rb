@@ -4,44 +4,53 @@ require 'application_system_test_case'
 
 class ReportsTest < ApplicationSystemTestCase
   setup do
-    @report = reports(:one)
+    @report = reports(:report_a)
   end
 
-  test 'visiting the index' do
+  test '日報一覧を表示できる' do
+    login
     visit reports_url
-    assert_selector 'h1', text: 'Reports'
+    assert_selector 'h1', text: '日報の一覧'
   end
 
-  test 'should create report' do
+  test '日報を作成できる' do
+    login
     visit reports_url
-    click_on 'New report'
+    click_on '日報の新規作成'
 
-    fill_in 'Content', with: @report.content
-    fill_in 'Title', with: @report.title
-    fill_in 'User', with: @report.user_id
-    click_on 'Create Report'
+    fill_in 'タイトル', with: 'システムテストの学習'
+    fill_in '内容', with: 'Capybaraを使って日報を作成しました'
 
-    assert_text 'Report was successfully created'
-    click_on 'Back'
+    assert_difference 'Report.count', 1 do
+      click_button '登録する'
+      assert_current_path %r{\A/reports/\d+\z}
+      assert_text 'システムテストの学習'
+    end
   end
 
-  test 'should update Report' do
+  test '日報を編集できる' do
+    login
     visit report_url(@report)
-    click_on 'Edit this report', match: :first
+    click_on 'この日報を編集'
 
-    fill_in 'Content', with: @report.content
-    fill_in 'Title', with: @report.title
-    fill_in 'User', with: @report.user_id
-    click_on 'Update Report'
+    fill_in 'タイトル', with: 'システムテストの編集'
+    fill_in '内容', with: 'Capybaraを使って日報を編集しました'
 
-    assert_text 'Report was successfully updated'
-    click_on 'Back'
+    click_button '更新する'
+    assert_current_path report_path(@report)
+
+    assert_text 'システムテストの編集'
+    assert_text 'Capybaraを使って日報を編集しました'
   end
 
-  test 'should destroy Report' do
+  test '日報を削除できる' do
+    login
     visit report_url(@report)
-    click_on 'Destroy this report', match: :first
+    assert_difference 'Report.count', -1 do
+      click_on 'この日報を削除'
+      assert_selector 'h1', text: '日報の一覧'
+    end
 
-    assert_text 'Report was successfully destroyed'
+    assert_no_text @report.title
   end
 end

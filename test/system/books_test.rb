@@ -7,39 +7,51 @@ class BooksTest < ApplicationSystemTestCase
     @book = books(:one)
   end
 
-  test 'visiting the index' do
+  test '本一覧を表示できる' do
+    login
     visit books_url
-    assert_selector 'h1', text: 'Books'
+    assert_selector 'h1', text: '本の一覧'
   end
 
-  test 'should create book' do
+  test '本を作成できる' do
+    login
     visit books_url
-    click_on 'New book'
+    click_on '本の新規作成'
 
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Title', with: @book.title
-    click_on 'Create Book'
+    fill_in 'タイトル', with: 'システムテストの学習'
+    fill_in 'メモ', with: 'Capybaraを使って本を作成しました'
 
-    assert_text 'Book was successfully created'
-    click_on 'Back'
+    assert_difference 'Book.count', 1 do
+      click_button '登録する'
+      assert_current_path %r{\A/books/\d+\z}
+      assert_text 'システムテストの学習'
+    end
   end
 
-  test 'should update Book' do
+  test '本を編集できる' do
+    login
     visit book_url(@book)
-    click_on 'Edit this book', match: :first
+    click_on 'この本を編集'
 
-    fill_in 'Memo', with: @book.memo
-    fill_in 'Title', with: @book.title
-    click_on 'Update Book'
+    fill_in 'タイトル', with: 'システムテストの編集'
+    fill_in 'メモ', with: 'Capybaraを使って本を編集しました'
 
-    assert_text 'Book was successfully updated'
-    click_on 'Back'
+    click_button '更新する'
+
+    assert_current_path book_path(@book)
+
+    assert_text 'システムテストの編集'
+    assert_text 'Capybaraを使って本を編集しました'
   end
 
-  test 'should destroy Book' do
+  test '本を削除できる' do
+    login
     visit book_url(@book)
-    click_on 'Destroy this book', match: :first
+    assert_difference 'Book.count', -1 do
+      click_on 'この本を削除'
+      assert_selector 'h1', text: '本の一覧'
+    end
 
-    assert_text 'Book was successfully destroyed'
+    assert_no_text @book.title
   end
 end
