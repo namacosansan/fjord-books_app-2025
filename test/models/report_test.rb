@@ -3,7 +3,6 @@
 require 'test_helper'
 
 class ReportTest < ActiveSupport::TestCase
-
   test 'ユーザーとターゲットユーザーは同じか' do
     user = User.new(name: 'Alice')
     report = Report.new(user: user)
@@ -68,6 +67,4 @@ class ReportTest < ActiveSupport::TestCase
 
     assert_empty report.mentioning_reports
   end
-
-  
 end

@@ -33,18 +33,17 @@ class ReportsTest < ApplicationSystemTestCase
 
   test '日報を編集できる' do
     login
-   
+
     visit report_url(@report)
-    
+
     click_on 'この日報を編集'
 
     fill_in 'タイトル', with: 'システムテストの編集'
     fill_in '内容', with: 'Capybaraを使って日報を編集しました'
-    
 
     click_button '更新する'
     assert_current_path report_path(@report)
-   
+
     assert_text 'システムテストの編集'
     assert_text 'Capybaraを使って日報を編集しました'
   end
