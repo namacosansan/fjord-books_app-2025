@@ -9,15 +9,12 @@ class BooksTest < ApplicationSystemTestCase
 
   test '本一覧を表示できる' do
     login
-
     visit books_url
-
     assert_selector 'h1', text: '本の一覧'
   end
 
   test '本を作成できる' do
     login
-
     visit books_url
     click_on '本の新規作成'
 
@@ -33,7 +30,6 @@ class BooksTest < ApplicationSystemTestCase
 
   test '本を編集できる' do
     login
-
     visit book_url(@book)
     click_on 'この本を編集'
 
@@ -41,6 +37,7 @@ class BooksTest < ApplicationSystemTestCase
     fill_in 'メモ', with: 'Capybaraを使って本を編集しました'
 
     click_button '更新する'
+
     assert_current_path book_path(@book)
 
     assert_text 'システムテストの編集'
@@ -49,9 +46,7 @@ class BooksTest < ApplicationSystemTestCase
 
   test '本を削除できる' do
     login
-
     visit book_url(@book)
-
     assert_difference 'Book.count', -1 do
       click_on 'この本を削除'
       assert_selector 'h1', text: '本の一覧'
