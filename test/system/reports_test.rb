@@ -8,13 +8,7 @@ class ReportsTest < ApplicationSystemTestCase
   end
 
   test '日報一覧を表示できる' do
-    visit new_user_session_path
-
-    fill_in 'Eメール', with: 'namaco@example.com'
-    fill_in 'パスワード', with: 'password'
-    click_button 'ログイン'
-
-    assert_text 'Namaco としてログイン中'
+    login
 
     visit reports_url
 
@@ -22,13 +16,7 @@ class ReportsTest < ApplicationSystemTestCase
   end
 
   test '日報を作成できる' do
-    visit new_user_session_path
-
-    fill_in 'Eメール', with: 'namaco@example.com'
-    fill_in 'パスワード', with: 'password'
-    click_button 'ログイン'
-
-    assert_text 'Namaco としてログイン中'
+    login
 
     visit reports_url
     click_on '日報の新規作成'
@@ -44,14 +32,7 @@ class ReportsTest < ApplicationSystemTestCase
   end
 
   test '日報を編集できる' do
-    visit new_user_session_path
-   
-    fill_in 'Eメール', with: 'namaco@example.com'
-    fill_in 'パスワード', with: 'password'
-   
-    click_button 'ログイン'
-
-    assert_text 'Namaco としてログイン中'
+    login
    
     visit report_url(@report)
     
@@ -69,12 +50,7 @@ class ReportsTest < ApplicationSystemTestCase
   end
 
   test '日報を削除できる' do
-    visit new_user_session_path
-    fill_in 'Eメール', with: 'namaco@example.com'
-    fill_in 'パスワード', with: 'password'
-    click_button 'ログイン'
-
-    assert_text 'Namaco としてログイン中'
+    login
 
     visit report_url(@report)
 

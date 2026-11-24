@@ -8,13 +8,7 @@ class BooksTest < ApplicationSystemTestCase
   end
 
   test '本一覧を表示できる' do
-    visit new_user_session_path
-
-    fill_in 'Eメール', with: 'namaco@example.com'
-    fill_in 'パスワード', with: 'password'
-
-    click_button 'ログイン'
-    assert_text 'Namaco としてログイン中'
+    login
 
     visit books_url
 
@@ -22,13 +16,7 @@ class BooksTest < ApplicationSystemTestCase
   end
 
   test '本を作成できる' do
-    visit new_user_session_path
-
-    fill_in 'Eメール', with: 'namaco@example.com'
-    fill_in 'パスワード', with: 'password'
-
-    click_button 'ログイン'
-    assert_text 'Namaco としてログイン中'
+    login
 
     visit books_url
     click_on '本の新規作成'
@@ -44,13 +32,7 @@ class BooksTest < ApplicationSystemTestCase
   end
 
   test '本を編集できる' do
-    visit new_user_session_path
-
-    fill_in 'Eメール', with: 'namaco@example.com'
-    fill_in 'パスワード', with: 'password'
-
-    click_button 'ログイン'
-    assert_text 'Namaco としてログイン中'
+    login
 
     visit book_url(@book)
     click_on 'この本を編集'
@@ -66,13 +48,7 @@ class BooksTest < ApplicationSystemTestCase
   end
 
   test '本を削除できる' do
-    visit new_user_session_path
-
-    fill_in 'Eメール', with: 'namaco@example.com'
-    fill_in 'パスワード', with: 'password'
-
-    click_button 'ログイン'
-    assert_text 'Namaco としてログイン中'
+    login
 
     visit book_url(@book)
 

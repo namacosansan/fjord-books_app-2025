@@ -11,4 +11,16 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     Capybara.current_session.driver.quit
     super
   end
+
+  private
+
+  def login
+    visit new_user_session_path
+
+    fill_in 'Eメール', with: 'namaco@example.com'
+    fill_in 'パスワード', with: 'password'
+
+    click_button 'ログイン'
+    assert_text 'Namaco としてログイン中'
+  end
 end
