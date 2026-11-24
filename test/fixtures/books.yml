@@ -7,3 +7,6 @@
 # two:
 #   title: MyString
 #   memo: MyText
+one:
+  title: Rubyの本
+  memo: Railsのテスト学習用
