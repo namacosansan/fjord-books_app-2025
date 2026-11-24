@@ -44,7 +44,6 @@ class ReportsTest < ApplicationSystemTestCase
   end
 
   test '日報を編集できる' do
-    # ① ログイン
     visit new_user_session_path
    
     fill_in 'Eメール', with: 'namaco@example.com'
@@ -54,28 +53,22 @@ class ReportsTest < ApplicationSystemTestCase
 
     assert_text 'Namaco としてログイン中'
    
-    # ② 編集画面を開く
     visit report_url(@report)
-    #puts page.text
+    
     click_on 'この日報を編集'
 
-    # ③ タイトルと内容を変更
     fill_in 'タイトル', with: 'システムテストの編集'
     fill_in '内容', with: 'Capybaraを使って日報を編集しました'
     
-    assert_field 'タイトル', with: 'システムテストの編集'
-    assert_field '内容', with: 'Capybaraを使って日報を編集しました'
-    # ④ 更新する
+
     click_button '更新する'
     assert_current_path report_path(@report)
    
-    # ⑤ 更新結果を確認する
     assert_text 'システムテストの編集'
     assert_text 'Capybaraを使って日報を編集しました'
   end
 
   test '日報を削除できる' do
-    # ① ログイン
     visit new_user_session_path
     fill_in 'Eメール', with: 'namaco@example.com'
     fill_in 'パスワード', with: 'password'
@@ -83,16 +76,13 @@ class ReportsTest < ApplicationSystemTestCase
 
     assert_text 'Namaco としてログイン中'
 
-    # ② 日報の詳細画面を開く
     visit report_url(@report)
 
-    # ③ 日報を削除する
     assert_difference 'Report.count', -1 do
       click_on 'この日報を削除'
       assert_selector 'h1', text: '日報の一覧'
     end
 
-    # ④ 削除されたことを確認する
     assert_no_text @report.title
   end
 end
